@@ -21,6 +21,14 @@ public class SecurityConfig {
 
         );
 
+        httpSecurity.formLogin((auth) -> auth.loginPage("/login")
+                .loginProcessingUrl("/loginProc")
+                .permitAll()
+        );
+
+        // 현재 개발환경에서는 disable
+        httpSecurity.csrf((auth) -> auth.disable());
+
 
         return httpSecurity.build();
 
